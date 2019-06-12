@@ -6,7 +6,8 @@ const {
 } = ReactNative;
 
 const Button = (props) => {
-  return <TouchableOpacity {...props}>
+  console.log("Props", props);
+  return <TouchableOpacity ref={props.tabBarButtonProps.} {...props}>
     {props.children}
   </TouchableOpacity>;
 };
