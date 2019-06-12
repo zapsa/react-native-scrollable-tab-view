@@ -5,7 +5,10 @@ const { TouchableOpacity, View } = ReactNative;
 const Button = props => {
   console.log("Props", props);
   return (
-    <TouchableOpacity /*ref={props.tabBarButtonProps.}*/ {...props}>
+    <TouchableOpacity
+      ref={props.tabBarButtonProps.generateRef(props.tabKey)}
+      {...props}
+    >
       {props.children}
     </TouchableOpacity>
   );
