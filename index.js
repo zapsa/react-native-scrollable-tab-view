@@ -140,13 +140,11 @@ const ScrollableTabView = createReactClass({
     if (Platform.OS === "ios") {
       const offset = pageNumber * this.state.containerWidth;
       if (this.scrollView) {
-        this.scrollView
-          .getNode()
-          .scrollTo({
-            x: offset,
-            y: 0,
-            animated: !this.props.scrollWithoutAnimation
-          });
+        this.scrollView.getNode().scrollTo({
+          x: offset,
+          y: 0,
+          animated: !this.props.scrollWithoutAnimation
+        });
       }
     } else {
       if (this.scrollView) {
@@ -417,11 +415,14 @@ const ScrollableTabView = createReactClass({
       this.props.tabBarPosition === "overlayBottom";
     let tabBarProps = {
       goToPage: this.goToPage,
-      tabs: this._children().map(child => {tabLabel: child.props.tabLabel, tabKey: child.props.tabKey}),
+      tabs: this._children().map(child => ({
+        tabLabel: child.props.tabLabel,
+        tabKey: child.props.tabKey
+      })),
       activeTab: this.state.currentPage,
       scrollValue: this.state.scrollValue,
-      containerWidth: this.state.containerWidth
-      tabBarButtonProps: this.props.tabBarButtonProps,
+      containerWidth: this.state.containerWidth,
+      tabBarButtonProps: this.props.tabBarButtonProps
     };
 
     if (this.props.tabBarBackgroundColor) {
