@@ -49,7 +49,7 @@ const ScrollableTabView = createReactClass({
     scrollWithoutAnimation: PropTypes.bool,
     locked: PropTypes.bool,
     prerenderingSiblingsNumber: PropTypes.number,
-    tabBarButtonProps: PropTypes.shape().isRequired
+    tabBarButtonProps: PropTypes.shape()
   },
 
   getDefaultProps() {
@@ -421,6 +421,7 @@ const ScrollableTabView = createReactClass({
       activeTab: this.state.currentPage,
       scrollValue: this.state.scrollValue,
       containerWidth: this.state.containerWidth
+      tabBarButtonProps: this.props.tabBarButtonProps,
     };
 
     if (this.props.tabBarBackgroundColor) {
